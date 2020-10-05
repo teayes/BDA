@@ -1,0 +1,27 @@
+use Company;
+db.createCollection("Employee");
+db.createCollection("Department");
+db.Employee.save({_id : 1, Name : "Rohan", DepartmentNumber : 1001, Age : 22, Phone : 8922301947});
+db.Employee.insertOne({_id : 2, Name : "Rahul", DepartmentNumber : 1002, Age : 26, Phone : 9901459282});
+db.Employee.insertMany([{_id : 3, Name : "Gaurav", DepartmentNumber : 1003, Age : 26, Phone : 8890335183},
+                      {_id : 4, Name : "Ranjan", DepartmentNumber : 1005, Age : 26, Phone : 9901459544},
+                      {_id : 5, Name : "Krupa", DepartmentNumber : 1007, Age : 26, Phone : 9749459182}]);
+
+db.Department.save({_id : 1, DepartmentName : "Research", DepartmentNumber : "1001"});
+db.Department.insertOne({_id : 2, DepartmentName : "Security", DepartmentNumber : "1002"});
+db.Department.insertMany([{_id : 3, DepartmentName : "Support", DepartmentNumber : "1003"},
+                        {_id : 4, DepartmentName : "Ecommerce", DepartmentNumber : "1007"},
+                        {_id : 5, DepartmentName : "Networking", DepartmentNumber : "1005"}]);
+
+db.Employee.update({_id : 5, Name : "Krupa"}, {_id : 5, Name : "Raghu", DepartmentNumber : 1004, Age : 23, Phone : 7723901937}, {upsert : true});
+
+db.Department.update({_id : 6}, {_id : 6, DepartmentName : "Advertising", DepartmentNumber : 1006}, {upsert : false});
+
+db.Employee.update({_id : 1, Name : "Rohan"}, {$set : {Hobbies : "Yoga"}}, {upsert : true});
+db.Employee.update({_id : 1, Name : "Rohan"}, {$unset : {Hobbies : "Yoga"}}, {upsert : true});
+
+db.Employee.find({DepartmentNumber : {$gt : 1000, $lt : 1006}}, {Name : true, DepartmentName : true});
+
+db.Employee.find({Age : {$gt : 30}});
+
+db.Employee.find({Name : {$regex : "^A"}})
