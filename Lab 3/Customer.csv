@@ -1,0 +1,6 @@
+_id,CustomerID,AccountBalance,AccountType
+1,101,1200,Z
+2,111,1300,A
+3,121,1700,Z
+4,131,1100,A
+5,143,1900,Z
