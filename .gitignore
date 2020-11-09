@@ -1,3 +1,4 @@
 *.mongodb
 .cassandraWorkbench
 .vscode
+*.jsonc
